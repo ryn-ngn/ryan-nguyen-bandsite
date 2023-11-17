@@ -1,0 +1,14 @@
+@use "assetsLinks" as *;
+@use "partial/abstracts" as *;
+
+body {
+  @font-face {
+    @include set-font-face("aveni-reg", 400, $font-avenir-reg);
+  }
+  @font-face {
+    @include set-font-face("aveni-demi", 600, $font-avenir-demi);
+  }
+  @font-face {
+    @include set-font-face("aveni-bold", 700, $font-avenir-bold);
+  }
+}

@@ -1,0 +1,5 @@
+@mixin set-font-face($font-name, $font-weight, $font-url) {
+  font-family: $font-name;
+  font-weight: $font-weight;
+  src: url($font-url);
+}
