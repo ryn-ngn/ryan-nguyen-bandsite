@@ -1,8 +1,8 @@
-@use "fonts";
+@use "partial/fonts";
 @use "partial/abstracts" as *;
 
 body {
-  font-family: "aveni-reg";
+  font-family: "aveni";
 
   @include mobile {
     margin: 0;
