@@ -1,13 +1,37 @@
-@use "partial/fonts";
+@use "partial/fonts" as *;
 @use "partial/abstracts" as *;
 
 body {
   font-family: "aveni";
-
+  @include setBodyFont;
   @include mobile {
+    @include setMobileBodyFont;
     margin: 0;
     main {
       margin: 0 0.8rem;
+    }
+  }
+}
+
+.header {
+  &__page {
+    @include setPageHeaderFont;
+    @include mobile {
+      @include setMobilePageHeaderFont;
+    }
+  }
+
+  &__section {
+    @include setSectionHeaderFont;
+    @include mobile {
+      @include setMobileSectionHeaderFont;
+    }
+  }
+
+  &__subheader {
+    @include setSubHeaderFont;
+    @include mobile {
+      @include setMobileSubHeaderFont;
     }
   }
 }

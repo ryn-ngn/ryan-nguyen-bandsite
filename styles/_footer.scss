@@ -5,3 +5,15 @@ footer {
   color: $color-white;
   padding: 1rem;
 }
+
+.footer-content {
+  &__icons {
+    width: 30vw;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.footer-logo {
+  text-transform: uppercase;
+}

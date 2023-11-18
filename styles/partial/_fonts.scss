@@ -10,3 +10,49 @@
 @font-face {
   @include set-font-face("aveni", 700, $font-avenir-bold-otf, $font-avenir-bold-ttf);
 }
+
+@mixin setFont($size: 0.875rem, $height: 1.375rem, $weight: 400) {
+  font-size: $size;
+  line-height: $height;
+  font-weight: $weight;
+}
+
+// desktop and tablet font settings
+@mixin setPageHeaderFont {
+  @include setFont($font-size-3xl, 4.25rem, 700);
+}
+@mixin setSectionHeaderFont {
+  @include setFont($font-size-2xl, 2.75rem, 700);
+}
+@mixin setSubHeaderFont {
+  @include setFont($font-size-xl, $spacing-m, 600);
+}
+@mixin setBodyFont {
+  @include setFont();
+}
+@mixin setFooterFont {
+  @include setFont($font-size-s, 1.25rem);
+}
+@mixin setLabelButtonFont {
+  @include setFont($font-size-xs, 1.25rem, 700);
+}
+
+// mobile font settings
+@mixin setMobilePageHeaderFont {
+  @include setFont($font-size-xl, $spacing-m, 700);
+}
+@mixin setMobileSectionHeaderFont {
+  @include setFont($font-size-xl, $spacing-m, 700);
+}
+@mixin setMobileSubHeaderFont {
+  @include setFont($font-size-s, 1.375rem, 600);
+}
+@mixin setMobileBodyFont {
+  @include setFont($font-size-xs, 1.125rem);
+}
+@mixin setMobileFooterFont {
+  @include setFont($font-size-s, 1.25rem);
+}
+@mixin setMobileLabelButtonFont {
+  @include setFont($font-size-3xs, 1.25rem, 700);
+}
