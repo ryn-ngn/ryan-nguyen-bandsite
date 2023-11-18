@@ -1,0 +1,13 @@
+@use "fonts";
+@use "partial/abstracts" as *;
+
+body {
+  font-family: "aveni-reg";
+
+  @include mobile {
+    margin: 0;
+    main {
+      margin: 0 0.8rem;
+    }
+  }
+}

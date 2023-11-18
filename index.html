@@ -4,21 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Band Site</title>
+    <link rel="stylesheet" type="text/css" href="./styles/bio.css" />
 </head>
 <body>
-    <header>
-        <nav>
-            <h1>
-                bandsite
-            </h1>
-            <ui>
-                <li>Biography</li>
-                <li>Shows</li>
-            </ui>
+    <header class="header">
+        <nav class="nav">
+            <div>
+                <h1 class="nav__heading">
+                    bandsite
+                </h1>
+            </div>
+            <div>
+                <ui class="nav__links">
+                    <li>Biography</li>
+                    <li>Shows</li>
+                </ui>
+            </div>
         </nav>
     </header>
-    <body>
-        <div>
+    <main>
+        <div class="hero">
             <h2>The Bees Knees</h2>
         </div>
 
@@ -60,9 +65,9 @@
             </div>
         </article>
 
-        <article>
-            <h2>Photo Gallery</h2>
-            <div>
+        <article class="gallery">
+            <h2 class="gallery__heading">Photo Gallery</h2>
+            <div class="gallery__content">
                 <img src="./assets/images/Photo-gallery-1.jpg" alt="music festival 1">
                 <img src="./assets/images/Photo-gallery-2.jpg" alt="music festival 2">
                 <img src="./assets/images/Photo-gallery-3.jpg" alt="music festival 3">
@@ -74,9 +79,9 @@
                 <img src="./assets/images/Photo-gallery-9.jpg" alt="music festival 9">
             </div>
         </article>
-    </body>
-    <footer>
-        <section>
+    </main>
+    <footer class="footer">
+        <section class="footer__main-content">
             <h2>Get In Touch</h2>
             <section>
                 <img src="./assets/icons/Icon-instagram.svg" alt="Icon-instagram">
@@ -114,7 +119,7 @@
             </section>
             <p>Copyright The Bees Knees © 2021 All Rights Reserved</p>
         </section>
-        <section>
+        <section class="footer__bandsite">
             <h3>bandsite</h3>
         </section>
 
