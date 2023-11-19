@@ -1,0 +1,26 @@
+@use "./partial/assetsLinks" as *;
+@use "./partial/abstracts" as *;
+
+// .hero {
+//   background-image: url($hero-background);
+//   background-size: contain;
+// }
+
+.hero {
+  position: relative;
+  text-align: center;
+  color: $color-white;
+  background-color: $color-bandsite-black;
+  height: fit-content;
+  &__picture {
+    width: 100%;
+    opacity: 50%;
+    // fix the bug of hero container always slightly higher than img
+    display: block;
+  }
+  &__heading {
+    position: absolute;
+    top: 35%;
+    left: 5%;
+  }
+}

@@ -1,19 +1,42 @@
 @use "partial/abstracts" as *;
 
-footer {
-  background-color: $color-bandsite-black;
-  color: $color-white;
-  padding: 1rem;
-}
-
-.footer-content {
-  &__icons {
-    width: 30vw;
-    display: flex;
-    justify-content: space-between;
+.footer {
+  .footer-content {
+    &__contacts {
+      &--person {
+        &--email a {
+          color: $color-white;
+          text-decoration: none;
+        }
+        // &--email a:hover {
+        // }
+      }
+    }
   }
-}
 
-.footer-logo {
-  text-transform: uppercase;
+  @include mobile {
+    position: relative;
+    .footer-content {
+      &__icons {
+        width: 35vw;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      &__contacts {
+        &--person {
+          padding-bottom: 0.3rem;
+        }
+      }
+
+      &__copyright {
+        padding-top: 5rem;
+      }
+    }
+    .footer-logo {
+      text-transform: uppercase;
+      position: fixed;
+      bottom: 4%;
+    }
+  }
 }

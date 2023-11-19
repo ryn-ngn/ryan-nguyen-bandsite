@@ -1,8 +1,13 @@
+@use "./partial/abstracts" as *;
+
 .gallery {
-  &__content img {
-    /* 
-    gallery's parent element is main; main has 0.8rem left & right margin
-    */
-    width: calc(100vw - 0.8rem * 2);
+  background-color: $color-alabaster;
+
+  @include mobile {
+    padding: $mobile-side-spacing;
+    &__content img {
+      width: calc(100vw - $mobile-side-spacing * 2);
+      padding-bottom: 1rem;
+    }
   }
 }

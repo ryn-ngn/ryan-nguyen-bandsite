@@ -2,14 +2,13 @@
 @use "partial/abstracts" as *;
 
 body {
+  max-width: $desktop-breakpoint;
   font-family: "aveni";
+  color: $color-bandsite-black;
   @include setBodyFont;
   @include mobile {
     @include setMobileBodyFont;
     margin: 0;
-    main {
-      margin: 0 0.8rem;
-    }
   }
 }
 
@@ -28,10 +27,20 @@ body {
     }
   }
 
-  &__subheader {
+  &__subHeader {
     @include setSubHeaderFont;
     @include mobile {
       @include setMobileSubHeaderFont;
     }
+  }
+}
+
+.footer {
+  background-color: $color-bandsite-black;
+  color: $color-white;
+  padding: 1rem;
+  @include setFooterFont;
+  @include mobile {
+    @include setMobileFooterFont;
   }
 }

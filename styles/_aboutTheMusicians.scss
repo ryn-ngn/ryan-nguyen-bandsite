@@ -1,0 +1,16 @@
+@use "./partial/abstracts" as *;
+
+.about-musicians {
+  @include mobile {
+    margin: 0 $mobile-side-spacing;
+    &__heading {
+      margin: $spacing-s $spacing-xs $spacing-xs $spacing-xs;
+    }
+    &__band-image {
+      width: 100%;
+    }
+    &__quote {
+      font-weight: 600;
+    }
+  }
+}
