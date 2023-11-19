@@ -19,9 +19,10 @@
 
 // desktop and tablet font settings
 @mixin setPageHeaderFont {
-  @include setFont($font-size-3xl, 4.25rem, 700);
+  @include setFont($font-size-3xl, $spacing-l, 500);
 }
 @mixin setSectionHeaderFont {
+  padding: $spacing-ml 0 $spacing-m 0;
   @include setFont($font-size-2xl, 2.75rem, 700);
 }
 @mixin setSubHeaderFont {
@@ -29,6 +30,9 @@
 }
 @mixin setBodyFont {
   @include setFont();
+}
+@mixin setFooterSubHeadFont {
+  @include setFont($font-size-s, 1.25rem, 600);
 }
 @mixin setFooterFont {
   @include setFont($font-size-xs, 1.25rem);
@@ -43,6 +47,7 @@
 }
 @mixin setMobileSectionHeaderFont {
   @include setFont($font-size-xl, $spacing-m, 650);
+  padding: $spacing-s 0 $spacing-xs 0;
 }
 @mixin setMobileSubHeaderFont {
   @include setFont($font-size-s, 1.375rem, 600);

@@ -5,10 +5,10 @@ body {
   max-width: $desktop-breakpoint;
   font-family: "aveni";
   color: $color-bandsite-black;
+  margin: 0;
   @include setBodyFont;
   @include mobile {
     @include setMobileBodyFont;
-    margin: 0;
   }
 }
 
@@ -38,8 +38,11 @@ body {
 .footer {
   background-color: $color-bandsite-black;
   color: $color-white;
-  padding: 1rem;
+  padding: 0 calc($spacing-3xl/2);
   @include setFooterFont;
+  &__footerSubHeader {
+    @include setFooterSubHeadFont;
+  }
   @include mobile {
     @include setMobileFooterFont;
   }

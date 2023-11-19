@@ -1,10 +1,6 @@
 @use "./partial/assetsLinks" as *;
 @use "./partial/abstracts" as *;
-
-// .hero {
-//   background-image: url($hero-background);
-//   background-size: contain;
-// }
+@use "./partial/fonts" as *;
 
 .hero {
   position: relative;
@@ -22,5 +18,13 @@
     position: absolute;
     top: 35%;
     left: 5%;
+  }
+
+  @include mobile {
+    @include setFont($font-size-m, $spacing-s, 600);
+  }
+
+  @include tablet {
+    @include setFont(2.5rem, $spacing-l, 500);
   }
 }

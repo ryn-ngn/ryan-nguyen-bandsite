@@ -1,10 +1,11 @@
-@use "partial/abstracts" as *;
+@use "./partial/abstracts" as *;
+@use "./partial/fonts" as *;
 
 header {
   background-color: $color-bandsite-black;
 }
 .nav {
-  color: $color-white;
+  color: $color-mercury;
 
   &__heading {
     text-transform: uppercase;
@@ -12,6 +13,13 @@ header {
 
   .active {
     border-bottom: solid 4px $color-white;
+    color: $color-white;
+  }
+
+  &__links {
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
   }
   @include mobile {
     &__heading {
@@ -21,13 +29,24 @@ header {
     }
 
     &__links {
-      display: flex;
-      flex-wrap: wrap;
-      list-style-type: none;
       text-align: center;
       li {
         padding-bottom: 1rem;
         width: 50vw;
+      }
+    }
+  }
+
+  @include tablet {
+    height: 7rem;
+    display: flex;
+    padding-left: $spacing-m;
+    &__links {
+      align-content: end;
+      padding-left: $spacing-xs;
+      li {
+        @include setFont($font-size-m, $spacing-s, 600);
+        padding: 2rem $spacing-xs;
       }
     }
   }

@@ -10,4 +10,21 @@
       padding-bottom: 1rem;
     }
   }
+
+  @include tablet {
+    padding: 0 calc($spacing-3xl/2);
+    &__heading {
+      margin: 0;
+    }
+
+    &__content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      img {
+        width: 28vw;
+        padding-bottom: $spacing-xs;
+      }
+    }
+  }
 }
