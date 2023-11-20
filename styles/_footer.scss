@@ -1,0 +1,105 @@
+@use "partial/abstracts" as *;
+
+.footer {
+  a {
+    color: $color-alabaster;
+    text-decoration: none;
+  }
+  &__heading {
+    margin: 0;
+  }
+  &__contacts {
+    &--person {
+      &--email a {
+        color: $color-white;
+        text-decoration: none;
+      }
+      // &--email a:hover {
+      // }
+    }
+  }
+  &__copyright {
+    margin: 0;
+  }
+
+  &__logo h1 {
+    margin: 0;
+    text-transform: uppercase;
+  }
+
+  @include mobile {
+    padding: 0 $spacing-xs;
+    &__icons {
+      width: 50%;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__contacts {
+      &--person {
+        padding-bottom: 0.3rem;
+      }
+    }
+
+    &__copyright {
+      padding-bottom: $spacing-xs;
+    }
+
+    &__logo h1 {
+      padding: $spacing-ml 0 $spacing-2xs 0;
+    }
+  }
+
+  @include tablet {
+    position: relative;
+    padding: 0 calc($spacing-3xl/2);
+    &__heading {
+      margin: 0;
+    }
+
+    &__heading-icon-ctn {
+      display: flex;
+    }
+
+    &__icons {
+      align-self: center;
+      padding-top: $spacing-xs;
+      padding-left: $spacing-xl;
+      img {
+        padding: 0 $spacing-xs;
+      }
+    }
+
+    &__contacts {
+      display: flex;
+      justify-content: space-between;
+    }
+    &__logo {
+      position: absolute;
+      top: $spacing-ml;
+      right: calc($spacing-3xl/2);
+    }
+
+    &__copyright {
+      padding-top: $spacing-m;
+      padding-bottom: $spacing-xs;
+    }
+  }
+
+  @include desktop {
+    padding: 0 calc($spacing-2xl * 2);
+
+    &__icons {
+      padding-left: $spacing-2xl;
+    }
+
+    &__contacts {
+      width: 75%;
+    }
+
+    &__logo {
+      top: $spacing-ml;
+      right: calc($spacing-2xl * 2);
+    }
+  }
+}

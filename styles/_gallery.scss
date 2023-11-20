@@ -1,0 +1,41 @@
+@use "./partial/abstracts" as *;
+@use "./partial/animation" as *;
+
+.gallery {
+  background-color: $color-alabaster;
+  &__content img {
+    filter: grayscale(1);
+    @include add-scale-and-recolor-animation;
+    border-radius: $spacing-2xs;
+  }
+
+  @include mobile {
+    padding: $mobile-side-spacing;
+    &__content img {
+      width: 100%;
+      height: auto;
+      margin-bottom: 1rem;
+    }
+  }
+
+  @include tablet {
+    padding: 0 calc($spacing-3xl/2);
+    &__heading {
+      margin: 0;
+    }
+
+    &__content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      img {
+        width: 31.5%;
+        margin-bottom: $spacing-xs;
+      }
+    }
+  }
+
+  @include desktop {
+    padding: 0 calc($spacing-2xl * 2) $spacing-m calc($spacing-2xl * 2);
+  }
+}
