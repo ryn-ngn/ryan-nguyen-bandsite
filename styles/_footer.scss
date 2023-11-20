@@ -24,8 +24,9 @@
   }
 
   @include mobile {
+    padding: 0 $spacing-xs;
     &__icons {
-      width: 35vw;
+      width: 50%;
       display: flex;
       justify-content: space-between;
     }
@@ -47,6 +48,7 @@
 
   @include tablet {
     position: relative;
+    padding: 0 calc($spacing-3xl/2);
     &__heading {
       margin: 0;
     }
@@ -72,6 +74,28 @@
       position: absolute;
       top: $spacing-ml;
       right: calc($spacing-3xl/2);
+    }
+
+    &__copyright {
+      padding-top: $spacing-m;
+      padding-bottom: $spacing-xs;
+    }
+  }
+
+  @include desktop {
+    padding: 0 calc($spacing-2xl * 2);
+
+    &__icons {
+      padding-left: $spacing-2xl;
+    }
+
+    &__contacts {
+      width: 75%;
+    }
+
+    &__logo {
+      top: $spacing-ml;
+      right: calc($spacing-2xl * 2);
     }
   }
 }

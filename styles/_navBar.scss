@@ -32,22 +32,26 @@ header {
       text-align: center;
       li {
         padding-bottom: 1rem;
-        width: 50vw;
+        width: 50%;
       }
     }
   }
 
   @include tablet {
-    height: 7rem;
+    height: 5rem;
     display: flex;
     padding-left: $spacing-m;
     &__links {
       align-content: end;
       padding-left: $spacing-xs;
       li {
-        @include setFont($font-size-m, $spacing-s, 600);
-        padding: 2rem $spacing-xs;
+        @include setFont($font-size-s, $spacing-s, 600);
+        padding: $spacing-s $spacing-m;
       }
     }
+  }
+
+  @include desktop {
+    padding: 0 calc($spacing-2xl * 2);
   }
 }

@@ -6,7 +6,7 @@
   @include mobile {
     padding: $mobile-side-spacing;
     &__content img {
-      width: calc(100vw - $mobile-side-spacing * 2);
+      width: 100%;
       padding-bottom: 1rem;
     }
   }
@@ -22,9 +22,13 @@
       flex-wrap: wrap;
       justify-content: space-between;
       img {
-        width: 28vw;
+        width: 31.5%;
         padding-bottom: $spacing-xs;
       }
     }
+  }
+
+  @include desktop {
+    padding: 0 calc($spacing-2xl * 2) $spacing-m calc($spacing-2xl * 2);
   }
 }
