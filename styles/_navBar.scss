@@ -23,6 +23,7 @@ header {
     display: flex;
     flex-wrap: wrap;
     list-style-type: none;
+    margin: 0;
   }
   @include mobile {
     &__heading {
@@ -33,6 +34,7 @@ header {
 
     &__links {
       text-align: center;
+      padding: 0;
       li {
         padding-bottom: 1rem;
         width: 50%;
