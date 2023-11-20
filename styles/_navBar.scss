@@ -6,7 +6,10 @@ header {
 }
 .nav {
   color: $color-mercury;
-
+  a {
+    color: $color-alabaster;
+    text-decoration: none;
+  }
   &__heading {
     text-transform: uppercase;
   }

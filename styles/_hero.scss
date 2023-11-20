@@ -1,6 +1,7 @@
 @use "./partial/assetsLinks" as *;
 @use "./partial/abstracts" as *;
 @use "./partial/fonts" as *;
+@use "./partial/animation" as *;
 
 .hero {
   position: relative;
@@ -20,6 +21,7 @@
     position: absolute;
     top: 35%;
     left: 5%;
+    @include add-scale-animation;
   }
 
   @include mobile {

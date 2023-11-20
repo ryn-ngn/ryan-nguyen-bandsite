@@ -1,6 +1,10 @@
 @use "partial/abstracts" as *;
 
 .footer {
+  a {
+    color: $color-alabaster;
+    text-decoration: none;
+  }
   &__heading {
     margin: 0;
   }
@@ -60,7 +64,7 @@
     &__icons {
       align-self: center;
       padding-top: $spacing-xs;
-      padding-left: $spacing-xs;
+      padding-left: $spacing-xl;
       img {
         padding: 0 $spacing-xs;
       }

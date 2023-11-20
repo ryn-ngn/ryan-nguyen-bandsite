@@ -38,7 +38,7 @@ body {
 .footer {
   background-color: $color-bandsite-black;
   color: $color-white;
-  // padding: 0 calc($spacing-3xl/2);
+
   @include setFooterFont;
   &__footerSubHeader {
     @include setFooterSubHeadFont;
