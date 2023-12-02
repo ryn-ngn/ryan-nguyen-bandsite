@@ -31,28 +31,3 @@ $tablet-breakpoint: 768px;
 $mobile-breakpoint: 320px;
 
 $mobile-side-spacing: 1rem;
-
-@mixin set-font-face($font-name, $font-weight, $otf-font-url, $ttf-font-url) {
-  font-family: $font-name;
-  font-weight: $font-weight;
-  src: url($otf-font-url);
-  src: url($ttf-font-url);
-}
-
-@mixin desktop {
-  @media screen and (min-width: $desktop-breakpoint) {
-    @content;
-  }
-}
-
-@mixin tablet {
-  @media screen and (min-width: $tablet-breakpoint) {
-    @content;
-  }
-}
-
-@mixin mobile {
-  @media screen and (max-width: calc($tablet-breakpoint - 1px)) {
-    @content;
-  }
-}

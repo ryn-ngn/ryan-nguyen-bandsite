@@ -1,4 +1,5 @@
-@use "./partial/abstracts" as *;
+@use "./partial/mixins" as *;
+@use "./partial/variables" as *;
 
 .about-musicians {
   &__quote {

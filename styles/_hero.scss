@@ -1,7 +1,8 @@
 @use "./partial/assetsLinks" as *;
-@use "./partial/abstracts" as *;
+@use "./partial/mixins" as *;
 @use "./partial/fonts" as *;
 @use "./partial/animation" as *;
+@use "./partial/variables" as *;
 
 .hero {
   position: relative;

@@ -1,8 +1,8 @@
 @use "partial/fonts" as *;
-@use "partial/abstracts" as *;
+@use "partial/mixins" as *;
+@use "./partial/variables" as *;
 
 body {
-  max-width: $desktop-breakpoint;
   font-family: "aveni";
   color: $color-bandsite-black;
   margin: 0;

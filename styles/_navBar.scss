@@ -1,5 +1,6 @@
-@use "./partial/abstracts" as *;
+@use "./partial/mixins" as *;
 @use "./partial/fonts" as *;
+@use "./partial/variables" as *;
 
 header {
   background-color: $color-bandsite-black;
@@ -14,16 +15,15 @@ header {
     text-transform: uppercase;
   }
 
-  .active {
-    border-bottom: solid 4px $color-white;
-    color: $color-white;
-  }
-
-  &__links {
+  .nav-links {
     display: flex;
     flex-wrap: wrap;
     list-style-type: none;
     margin: 0;
+    &__link--active {
+      border-bottom: solid 4px $color-white;
+      color: $color-white;
+    }
   }
   @include mobile {
     &__heading {
@@ -32,7 +32,7 @@ header {
       padding: 1rem 0;
     }
 
-    &__links {
+    .nav-links {
       text-align: center;
       padding: 0;
       li {
@@ -46,7 +46,7 @@ header {
     height: 5rem;
     display: flex;
     padding-left: $spacing-m;
-    &__links {
+    .nav-links {
       align-content: end;
       padding-left: $spacing-xs;
       li {
