@@ -11,39 +11,3 @@ body {
     @include setMobileBodyFont;
   }
 }
-
-.header {
-  &__page {
-    @include setPageHeaderFont;
-    @include mobile {
-      @include setMobilePageHeaderFont;
-    }
-  }
-
-  &__section {
-    @include setSectionHeaderFont;
-    @include mobile {
-      @include setMobileSectionHeaderFont;
-    }
-  }
-
-  &__subHeader {
-    @include setSubHeaderFont;
-    @include mobile {
-      @include setMobileSubHeaderFont;
-    }
-  }
-}
-
-.footer {
-  background-color: $color-bandsite-black;
-  color: $color-white;
-
-  @include setFooterFont;
-  &__footerSubHeader {
-    @include setFooterSubHeadFont;
-  }
-  @include mobile {
-    @include setMobileFooterFont;
-  }
-}

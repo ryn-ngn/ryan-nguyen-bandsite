@@ -11,8 +11,13 @@ header {
     color: $color-alabaster;
     text-decoration: none;
   }
+
   &__heading {
     text-transform: uppercase;
+    margin: 0;
+    text-align: center;
+    padding: 1rem 0;
+    @include setMobilePageHeaderFont;
   }
 
   .nav-links {
@@ -20,23 +25,15 @@ header {
     flex-wrap: wrap;
     list-style-type: none;
     margin: 0;
-    &__link--active {
-      border-bottom: solid 4px $color-white;
-      color: $color-white;
-    }
-  }
-  @include mobile {
-    &__heading {
-      margin: 0;
-      text-align: center;
-      padding: 1rem 0;
-    }
+    text-align: center;
+    padding: 0;
 
-    .nav-links {
-      text-align: center;
-      padding: 0;
-      li {
-        padding-bottom: 1rem;
+    &__link {
+      padding-bottom: 1rem;
+      width: 50%;
+      &--active {
+        border-bottom: solid 4px $color-white;
+        color: $color-white;
         width: 50%;
       }
     }
@@ -46,12 +43,23 @@ header {
     height: 5rem;
     display: flex;
     padding-left: $spacing-m;
+
+    &__heading {
+      padding: 0;
+      margin: 1.5rem;
+      @include setPageHeaderFont;
+    }
     .nav-links {
       align-content: end;
       padding-left: $spacing-xs;
-      li {
+      flex-wrap: nowrap;
+      &__link {
         @include setFont($font-size-s, $spacing-s, 600);
-        padding: $spacing-s $spacing-m;
+        padding: $spacing-m;
+        &--active {
+          @include setFont($font-size-s, $spacing-s, 600);
+          padding: $spacing-m;
+        }
       }
     }
   }

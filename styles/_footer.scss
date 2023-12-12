@@ -2,82 +2,86 @@
 @use "./partial/variables" as *;
 
 .footer {
+  padding: 0 $spacing-xs;
+  background-color: $color-bandsite-black;
+  color: $color-white;
+  @include setMobileFooterFont;
+
   a {
     color: $color-alabaster;
     text-decoration: none;
   }
-  &__heading {
-    margin: 0;
-  }
-  &__contacts {
-    &--person {
-      &--email a {
-        color: $color-white;
-        text-decoration: none;
-      }
-      // &--email a:hover {
-      // }
+  .footer-icon-ctn {
+    &__heading {
+      margin: 0;
+      @include setMobileSectionHeaderFont;
     }
-  }
-  &__copyright {
-    margin: 0;
-  }
-
-  &__logo h1 {
-    margin: 0;
-    text-transform: uppercase;
-  }
-
-  @include mobile {
-    padding: 0 $spacing-xs;
     &__icons {
       width: 50%;
       display: flex;
       justify-content: space-between;
     }
+  }
 
-    &__contacts {
-      &--person {
-        padding-bottom: 0.3rem;
-      }
-    }
+  .footer-contacts {
+    padding-bottom: 0.3rem;
 
-    &__copyright {
-      padding-bottom: $spacing-xs;
+    &__heading {
+      @include setFooterSubHeadFont;
     }
+    &__email {
+      color: $color-white;
+      text-decoration: none;
+    }
+  }
 
-    &__logo h1 {
-      padding: $spacing-ml 0 $spacing-2xs 0;
-    }
+  &__copyright {
+    margin: 0;
+    padding-bottom: $spacing-xs;
+  }
+
+  &__logo h1 {
+    @include setMobilePageHeaderFont;
+    margin: 0;
+    text-transform: uppercase;
+    padding: $spacing-ml 0 $spacing-2xs 0;
   }
 
   @include tablet {
     position: relative;
     padding: 0 calc($spacing-3xl/2);
-    &__heading {
-      margin: 0;
-    }
+    @include setFooterFont;
 
-    &__heading-icon-ctn {
+    .footer-icon-ctn {
       display: flex;
-    }
 
-    &__icons {
-      align-self: center;
-      padding-top: $spacing-xs;
-      padding-left: $spacing-xl;
-      img {
-        padding: 0 $spacing-xs;
+      &__heading {
+        @include setSectionHeaderFont;
+      }
+      &__icons {
+        align-self: center;
+        padding-top: $spacing-xs;
+        padding-left: $spacing-3xl;
+        width: 25%;
+        img {
+          padding: 0 $spacing-xs;
+        }
       }
     }
 
-    &__contacts {
+    .footer-contacts-ctn {
       display: flex;
       justify-content: space-between;
+      .footer-contacts {
+        &__heading {
+          margin: 0;
+        }
+      }
     }
+
     &__logo {
       position: absolute;
-      top: $spacing-ml;
+      top: $spacing-2xs;
       right: calc($spacing-3xl/2);
     }
 
@@ -90,16 +94,18 @@
   @include desktop {
     padding: 0 calc($spacing-2xl * 2);
 
-    &__icons {
-      padding-left: $spacing-2xl;
+    .footer-icon-ctn {
+      &__icons {
+        padding-left: $spacing-xl;
+        width: 20%;
+      }
     }
 
-    &__contacts {
-      width: 75%;
+    .footer-contacts-ctn {
+      width: 70%;
     }
 
     &__logo {
-      top: $spacing-ml;
       right: calc($spacing-2xl * 2);
     }
   }

@@ -25,9 +25,7 @@
     @include add-scale-animation;
   }
 
-  @include mobile {
-    @include setFont($font-size-m, $spacing-s, 600);
-  }
+  @include setFont($font-size-m, $spacing-s, 600);
 
   @include tablet {
     @include setFont(2.5rem, $spacing-l, 500);
