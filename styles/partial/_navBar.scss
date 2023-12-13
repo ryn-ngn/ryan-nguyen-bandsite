@@ -1,6 +1,6 @@
-@use "./partial/mixins" as *;
-@use "./partial/fonts" as *;
-@use "./partial/variables" as *;
+@use "./mixins" as *;
+@use "./fonts" as *;
+@use "./variables" as *;
 
 header {
   background-color: $color-bandsite-black;

@@ -1,5 +1,5 @@
-@use "partial/mixins" as *;
-@use "./partial/variables" as *;
+@use "./mixins" as *;
+@use "./variables" as *;
 
 .footer {
   padding: 0 $spacing-xs;

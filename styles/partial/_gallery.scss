@@ -1,6 +1,6 @@
-@use "./partial/mixins" as *;
-@use "./partial/animation" as *;
-@use "./partial/variables" as *;
+@use "./mixins" as *;
+@use "./animation" as *;
+@use "./variables" as *;
 
 .gallery {
   background-color: $color-alabaster;

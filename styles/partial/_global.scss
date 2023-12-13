@@ -1,6 +1,6 @@
-@use "partial/fonts" as *;
-@use "partial/mixins" as *;
-@use "./partial/variables" as *;
+@use "./fonts" as *;
+@use "./mixins" as *;
+@use "./variables" as *;
 
 body {
   font-family: "aveni";
