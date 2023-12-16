@@ -54,9 +54,9 @@ for (const [key, show] of Object.entries(shows)) {
     let tempField;
 
     // decide which key-value pair is being processed
-    key === "dates" ? (tempField = "dates") : "";
-    key === "location" ? (tempField = "location") : "";
-    key === "venue" ? (tempField = "venue") : "";
+    if (key === "dates") tempField = "dates";
+    else if (key === "location") tempField = "location";
+    else tempField = "venue";
 
     // create heading for each element, add to show card
     tempClassName = `${blockClass}heading`;
