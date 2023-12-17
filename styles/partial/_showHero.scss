@@ -32,18 +32,18 @@
       max-height: 45vh;
     }
     &__heading {
-      top: 8rem;
+      top: 7rem;
       line-height: $spacing-3xl;
       @include setShowHeroTextTablet;
     }
     &__sub-heading {
-      top: $spacing-xs;
+      top: 0;
       @include setSectionHeaderFont;
       @include setShowHeroTextTablet;
     }
 
     &__sound-cloud {
-      bottom: $spacing-2xl;
+      bottom: $spacing-l;
       left: $spacing-xl;
       width: 50%;
     }

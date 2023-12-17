@@ -24,18 +24,11 @@ const cmtList = document.querySelector(".comments-list");
 function addNewElementToParent(newEleType, parentEle, newEleClass, newEleContent) {
   const childElement = document.createElement(newEleType);
   childElement.classList.add(newEleClass);
-  childElement.innerText = newEleContent;
+  if (newEleContent) childElement.innerText = newEleContent;
   parentEle.appendChild(childElement);
 }
 
-// helper function to add separator line to comment card
-function addSeparatorLine() {
-  const separatorLine = document.createElement("hr");
-  separatorLine.classList.add("comments-list__divider");
-  cmtList.appendChild(separatorLine);
-}
-
-// helper function to add comment avatar to comment card
+// helper function to create avatar container
 function addAvatar(commentCard, blockClass) {
   const avatar = document.createElement("div");
 
@@ -43,13 +36,17 @@ function addAvatar(commentCard, blockClass) {
   img.classList.add(`${blockClass}avatar`);
   img.src = "https://placehold.co/36";
   avatar.appendChild(img);
-  commentCard.appendChild(avatar);
+
+  return avatar;
 }
 
+// helper function to create text content (name, date, comment) container
 function createCommentTxtCtn(comment) {
   const blockClass = "comment-text-ctn";
+
   const commentTxtCtn = document.createElement("div");
   commentTxtCtn.classList.add(blockClass);
+
   const nameDate = document.createElement("div");
   nameDate.classList.add(`${blockClass}__name-date`);
   commentTxtCtn.appendChild(nameDate);
@@ -75,62 +72,60 @@ function createCommentTxtCtn(comment) {
   return commentTxtCtn;
 }
 
-// helper function to create content of a comment card
+// helper function to comment comment card from avatar ctn and text ctn
 function createCommentCardContent(comment, blockClass) {
   const commentCard = document.createElement("div");
 
   commentCard.classList.add("comment-card");
-  addAvatar(commentCard, blockClass);
+  const avatarCtn = addAvatar(commentCard, blockClass);
+  commentCard.appendChild(avatarCtn);
 
-  let commentTxtCtn = createCommentTxtCtn(comment);
+  const commentTxtCtn = createCommentTxtCtn(comment);
   commentCard.appendChild(commentTxtCtn);
   return commentCard;
 }
 
 // loop through comment list, use each comment object to create new comment card
-for (const [key, comment] of Object.entries(comments)) {
-  const blockClass = "comment-card__";
-  const commentCard = createCommentCardContent(comment, blockClass);
-  cmtList.appendChild(commentCard);
-  addSeparatorLine();
-}
+function populateCommentList() {
+  addNewElementToParent("hr", cmtList, "comments-list__divider");
 
+  for (const [key, comment] of Object.entries(comments)) {
+    const blockClass = "comment-card__";
+    const commentCard = createCommentCardContent(comment, blockClass);
+    cmtList.appendChild(commentCard);
+    addNewElementToParent("hr", cmtList, "comments-list__divider");
+  }
+}
+populateCommentList();
+
+// event listener to handle form submit/ mouse click on COMMEnT button
 const commentBtn = document.querySelector(".comment-form__button");
 commentBtn.addEventListener("click", (event) => {
   const userName = document.getElementById("nameInput");
   const comment = document.getElementById("commentInput");
 
-  if (userName.value !== "" && comment.value !== "") {
-    const date = new Date().toLocaleDateString({
-      month: "short",
-      day: "short",
-      year: "numeric",
-    });
-    const newComment = {
-      name: userName.value,
-      date: date,
-      comment: comment.value,
-    };
-    comments.unshift(newComment);
-    event.preventDefault();
-    document.querySelector(".comment-form").reset();
+  if (userName.value === "" || comment.value === "") return;
 
-    // attempt to update comments object and re-render the comments-list
-    // resulted in a bug that css wouldn't apply to refreshed DOM
-    // comments.unshift(newComment)
-    // const newCmtList = document.createElement("div");
-    // newCmtList.classList.add(".comments-list");
-    // commentsElement.appendChild(newCmtList);
-    // addSeparatorLine(newCmtList);
-    // populateCommentsList(newCmtList);
+  const date = new Date().toLocaleDateString({
+    month: "short",
+    day: "short",
+    year: "numeric",
+  });
 
-    const commentCard = createCommentCardContent(newComment, "comment-card__");
-    const divider = document.querySelector(".comments-list__divider");
-    divider.after(commentCard);
+  const newComment = {
+    name: userName.value,
+    date: date,
+    comment: comment.value,
+  };
+  comments.unshift(newComment);
+  event.preventDefault();
+  document.querySelector(".comment-form").reset();
 
-    const separatorLine = document.createElement("hr");
-    separatorLine.classList.add("comments-list__divider");
+  let currComments = document.querySelectorAll(".comment-card");
+  currComments.forEach((comment) => comment.remove(comment.firstChild));
 
-    commentCard.after(separatorLine);
-  }
+  let dividers = document.querySelectorAll(".comments-list__divider");
+  dividers.forEach((divider) => divider.remove(divider.firstChild));
+
+  populateCommentList();
 });
