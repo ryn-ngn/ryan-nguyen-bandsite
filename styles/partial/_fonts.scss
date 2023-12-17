@@ -1,64 +1,23 @@
-@use "assetsLinks" as *;
-@use "abstracts" as *;
+@use "./assetsLinks" as *;
+@use "./mixins" as *;
+@use "./variables" as *;
 
 @font-face {
-  @include set-font-face("aveni", 400, $font-avenir-reg-otf, $font-avenir-reg-ttf);
+  font-family: "aveni";
+  font-weight: 400;
+  src: url($font-avenir-reg-otf);
+  src: url($font-avenir-reg-ttf);
+}
+
+@font-face {
+  font-family: "aveni";
+  font-weight: 600;
+  src: url($font-avenir-demi-otf);
+  src: url($font-avenir-demi-ttf);
 }
 @font-face {
-  @include set-font-face("aveni", 600, $font-avenir-demi-otf, $font-avenir-demi-ttf);
-}
-@font-face {
-  @include set-font-face("aveni", 700, $font-avenir-bold-otf, $font-avenir-bold-ttf);
-}
-
-@mixin setFont($size: 1rem, $height: 1.375rem, $weight: 500) {
-  font-size: $size;
-  line-height: $height;
-  font-weight: $weight;
-}
-
-// desktop and tablet font settings
-@mixin setPageHeaderFont {
-  @include setFont($font-size-xl, $spacing-l, 500);
-}
-@mixin setSectionHeaderFont {
-  padding: $spacing-ml 0 $spacing-m 0;
-  @include setFont($font-size-2xl, 2.75rem, 700);
-}
-@mixin setSubHeaderFont {
-  padding: $spacing-l 0 $spacing-s 0;
-  @include setFont($font-size-xl, $spacing-m, 600);
-}
-@mixin setBodyFont {
-  @include setFont();
-}
-@mixin setFooterSubHeadFont {
-  @include setFont($font-size-s, 1.25rem, 600);
-}
-@mixin setFooterFont {
-  @include setFont($font-size-xs, 1.25rem);
-}
-@mixin setLabelButtonFont {
-  @include setFont($font-size-2xs, 1.25rem, 700);
-}
-
-// mobile font settings
-@mixin setMobilePageHeaderFont {
-  @include setFont($font-size-xl, $spacing-m, 500);
-}
-@mixin setMobileSectionHeaderFont {
-  @include setFont($font-size-xl, $spacing-m, 650);
-  padding: $spacing-s 0 $spacing-xs 0;
-}
-@mixin setMobileSubHeaderFont {
-  @include setFont($font-size-s, 1.375rem, 600);
-}
-@mixin setMobileBodyFont {
-  @include setFont($font-size-s, $spacing-s);
-}
-@mixin setMobileFooterFont {
-  @include setFont($font-size-xs, 1.25rem, 500);
-}
-@mixin setMobileLabelButtonFont {
-  @include setFont($font-size-3xs, 1.25rem, 700);
+  font-family: "aveni";
+  font-weight: 700;
+  src: url($font-avenir-bold-otf);
+  src: url($font-avenir-bold-ttf);
 }

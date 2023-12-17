@@ -1,27 +1,28 @@
-@use "./partial/abstracts" as *;
-@use "./partial/animation" as *;
+@use "./mixins" as *;
+@use "./animation" as *;
+@use "./variables" as *;
 
 .gallery {
   background-color: $color-alabaster;
+  padding: $spacing-xs;
+
+  &__heading {
+    @include setMobileSectionHeaderFont;
+  }
   &__content img {
+    width: 100%;
+    height: auto;
+    margin-bottom: $spacing-xs;
     filter: grayscale(1);
     @include add-scale-and-recolor-animation;
     border-radius: $spacing-2xs;
   }
 
-  @include mobile {
-    padding: $mobile-side-spacing;
-    &__content img {
-      width: 100%;
-      height: auto;
-      margin-bottom: 1rem;
-    }
-  }
-
   @include tablet {
-    padding: 0 calc($spacing-3xl/2);
+    padding: 0 $spacing-tablet-padding;
     &__heading {
       margin: 0;
+      @include setSectionHeaderFont;
     }
 
     &__content {
@@ -36,6 +37,6 @@
   }
 
   @include desktop {
-    padding: 0 calc($spacing-2xl * 2) $spacing-m calc($spacing-2xl * 2);
+    padding: 0 $spacing-desktop-padding $spacing-m $spacing-desktop-padding;
   }
 }

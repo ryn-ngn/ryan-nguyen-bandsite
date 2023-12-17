@@ -1,0 +1,112 @@
+@use "./mixins" as *;
+@use "./variables" as *;
+
+.footer {
+  padding: 0 $spacing-xs;
+  background-color: $color-bandsite-black;
+  color: $color-white;
+  @include setMobileFooterFont;
+
+  a {
+    color: $color-alabaster;
+    text-decoration: none;
+  }
+  .footer-icon-ctn {
+    &__heading {
+      margin: 0;
+      @include setMobileSectionHeaderFont;
+    }
+    &__icons {
+      width: 50%;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  .footer-contacts {
+    padding-bottom: 0.3rem;
+
+    &__heading {
+      @include setFooterSubHeadFont;
+    }
+    &__email {
+      color: $color-white;
+      text-decoration: none;
+    }
+  }
+
+  &__copyright {
+    margin: 0;
+    padding-bottom: $spacing-xs;
+  }
+
+  &__logo h1 {
+    @include setMobilePageHeaderFont;
+    margin: 0;
+    text-transform: uppercase;
+    padding: $spacing-ml 0 $spacing-2xs 0;
+  }
+
+  @include tablet {
+    position: relative;
+    padding: 0 $spacing-tablet-padding;
+    @include setFooterFont;
+
+    .footer-icon-ctn {
+      display: flex;
+
+      &__heading {
+        @include setSectionHeaderFont;
+      }
+      &__icons {
+        align-self: center;
+        padding-top: $spacing-xs;
+        padding-left: $spacing-3xl;
+        width: 25%;
+        img {
+          padding: 0 $spacing-xs;
+        }
+      }
+    }
+
+    .footer-contacts-ctn {
+      display: flex;
+      justify-content: space-between;
+      .footer-contacts {
+        &__heading {
+          margin: 0;
+        }
+      }
+    }
+
+    &__logo {
+      position: absolute;
+      top: $spacing-2xs;
+      right: $spacing-tablet-padding;
+    }
+
+    &__copyright {
+      padding-top: $spacing-m;
+      padding-bottom: $spacing-xs;
+    }
+  }
+
+  @include desktop {
+    padding: 0 $spacing-desktop-padding;
+
+    .footer-icon-ctn {
+      &__icons {
+        padding-left: $spacing-xl;
+        width: 20%;
+      }
+    }
+
+    .footer-contacts-ctn {
+      width: 70%;
+    }
+
+    &__logo {
+      right: $spacing-desktop-padding;
+    }
+  }
+}

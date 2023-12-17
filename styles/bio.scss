@@ -1,6 +1,7 @@
-@use "./global";
-@use "./navBar";
-@use "./gallery";
-@use "./footer";
-@use "./hero";
-@use "./aboutTheMusicians";
+@use "./partial/global";
+@use "./partial/navBar";
+@use "./partial/gallery";
+@use "./partial/footer";
+@use "./partial/hero";
+@use "./partial/aboutTheMusicians";
+@use "./partial/comments";

@@ -1,0 +1,133 @@
+@use "./variables" as *;
+@use "./mixins" as *;
+
+.comments {
+  padding: 0 $spacing-xs;
+
+  &__heading {
+    margin: 0;
+    @include setMobileSectionHeaderFont;
+  }
+
+  &__form-ctn {
+    display: flex;
+
+    .comment-avatar {
+      margin-top: $spacing-s;
+      @include setAvatarCommentMobile;
+      border-radius: 50%;
+    }
+
+    .comment-form {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      padding-left: $spacing-xs;
+
+      &__label {
+        @include setMobileSubHeaderFont;
+        text-transform: uppercase;
+        color: $color-silver;
+        padding-bottom: $spacing-3xs;
+      }
+
+      &__content {
+        border-radius: $spacing-3xs;
+        margin-bottom: $spacing-s;
+        padding: $spacing-2xs;
+        height: $font-size-2xl;
+        border: solid 1px $color-mercury;
+        &::placeholder {
+          color: $color-silver;
+        }
+        &:focus {
+          border-color: $color-bandsite-black;
+        }
+        &:invalid {
+          border-color: $color-form-input-error;
+        }
+      }
+
+      &__button {
+        @include setButtonStyle;
+      }
+    }
+  }
+
+  .comments-list {
+    &__divider {
+      @include setDividerStyle;
+    }
+
+    .comment-card {
+      display: flex;
+
+      &__avatar {
+        @include setAvatarCommentMobile;
+        border-radius: 50%;
+      }
+
+      .comment-text-ctn {
+        padding-left: $spacing-xs;
+        width: 100%;
+        &__name-date {
+          display: flex;
+          justify-content: space-between;
+        }
+        &__name {
+          @include setMobileSubHeaderFont;
+          margin: 0;
+        }
+
+        &__date {
+          color: $color-silver;
+          margin: 0;
+        }
+      }
+    }
+  }
+
+  @include tablet {
+    padding: 0 $spacing-tablet-padding;
+
+    &__heading {
+      @include setSectionHeaderFont;
+    }
+
+    &__form-ctn {
+      padding: 0 $spacing-2xl;
+      .comment-avatar {
+        @include setAvatarCommentTablet;
+      }
+      .comment-form {
+        position: relative;
+        padding-bottom: $spacing-l;
+        &__button {
+          width: 32%;
+          position: absolute;
+          right: 0;
+          bottom: $spacing-2xs;
+        }
+      }
+    }
+
+    .comments-list {
+      padding: 0 $spacing-2xl;
+
+      .comment-card {
+        padding: $spacing-s 0 $spacing-2xs 0;
+        &__avatar {
+          @include setAvatarCommentTablet;
+        }
+      }
+    }
+  }
+
+  @include desktop {
+    padding: 0 $spacing-desktop-padding-lg;
+    margin: 0 $spacing-xs;
+    &__heading {
+      margin-left: calc(0rem - $spacing-m);
+    }
+  }
+}

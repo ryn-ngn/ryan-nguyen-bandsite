@@ -1,0 +1,67 @@
+@use "./assetsLinks" as *;
+@use "./mixins" as *;
+@use "./fonts" as *;
+@use "./animation" as *;
+@use "./variables" as *;
+@use "./hero";
+
+.hero {
+  &__heading {
+    top: $spacing-2xl;
+    @include noPaddingMargin;
+    @include setShowHeroTextMobile;
+    line-height: $spacing-l;
+    width: 70%;
+  }
+  &__sub-heading {
+    position: absolute;
+    top: $spacing-xs;
+    @include setShowHeroTextMobile;
+    @include noPaddingMargin;
+    @include setMobileSubHeaderFont;
+  }
+  &__sound-cloud {
+    position: absolute;
+    bottom: $spacing-xs;
+    left: $spacing-xs;
+    width: 90%;
+  }
+
+  @include tablet {
+    &__picture {
+      max-height: 45vh;
+    }
+    &__heading {
+      top: 7rem;
+      line-height: $spacing-3xl;
+      @include setShowHeroTextTablet;
+    }
+    &__sub-heading {
+      top: 0;
+      @include setSectionHeaderFont;
+      @include setShowHeroTextTablet;
+    }
+
+    &__sound-cloud {
+      bottom: $spacing-l;
+      left: $spacing-xl;
+      width: 50%;
+    }
+  }
+
+  @include desktop {
+    &__heading {
+      left: 9.375rem;
+      width: 40%;
+    }
+    &__sub-heading {
+      left: 9.375rem;
+    }
+    &__sound-cloud {
+      right: 9rem;
+      left: auto;
+      bottom: 40%;
+      width: 35%;
+    }
+  }
+}

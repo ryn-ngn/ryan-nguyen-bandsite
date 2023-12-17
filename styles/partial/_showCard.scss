@@ -1,0 +1,75 @@
+@use "./variables" as *;
+@use "../partial/mixins" as *;
+
+.shows-ctn {
+  padding: 0 $spacing-xs $spacing-xs $spacing-xs;
+  &__heading {
+    @include setMobileSectionHeaderFont;
+  }
+  .show-card {
+    .info-group-ctn__heading {
+      text-transform: uppercase;
+      color: $color-silver;
+    }
+    .info-group-ctn__dates {
+      font-weight: bold;
+    }
+    .info-group-ctn__button {
+      @include setButtonStyle;
+      width: 100%;
+    }
+    .info-group-ctn__divider {
+      @include setDividerStyle;
+      margin-left: calc(0rem - $spacing-xs);
+      margin-right: calc(0rem - $spacing-xs);
+    }
+  }
+
+  @include tablet {
+    padding: 0 $spacing-l;
+    &__heading {
+      @include setSectionHeaderFont;
+    }
+    .show-card {
+      &:nth-child(n + 4) {
+        .info-group-ctn {
+          &__heading {
+            display: none;
+          }
+          &__button {
+            bottom: $spacing-m;
+          }
+        }
+      }
+
+      &:hover {
+        background-color: $color-alabaster;
+      }
+
+      display: flex;
+      flex-wrap: wrap;
+
+      justify-content: start;
+      position: relative;
+      padding: $spacing-s $spacing-xs;
+
+      .info-group-ctn {
+        width: 26%;
+
+        &__button {
+          width: 20%;
+          position: absolute;
+          right: $spacing-xs;
+          bottom: $spacing-ml;
+        }
+      }
+    }
+    .show-card.clicked {
+      background-color: $color-mercury;
+    }
+  }
+
+  @include desktop {
+    padding: 0 $spacing-desktop-padding;
+  }
+}

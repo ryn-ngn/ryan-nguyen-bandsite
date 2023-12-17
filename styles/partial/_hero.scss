@@ -1,0 +1,33 @@
+@use "./assetsLinks" as *;
+@use "./mixins" as *;
+@use "./fonts" as *;
+@use "./animation" as *;
+@use "./variables" as *;
+
+.hero {
+  @include setHeroDivStyle;
+
+  &__picture {
+    @include setHeroPictureStyle;
+  }
+  &__heading {
+    position: absolute;
+    top: 35%;
+    left: 5%;
+    @include add-scale-animation;
+  }
+
+  @include setFont($font-size-m, $spacing-s, 600);
+
+  @include tablet {
+    @include setFont(2.5rem, $spacing-l, 500);
+  }
+
+  @include desktop {
+    &__heading {
+      position: absolute;
+      top: 35%;
+      left: 10%;
+    }
+  }
+}

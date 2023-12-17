@@ -2,8 +2,9 @@ $color-bandsite-black: #323232;
 $color-bandsite-drarkblack: #000000;
 $color-white: #ffffff;
 $color-mercury: #e1e1e1;
-$color-silver: #323232;
+$color-silver: #afafaf;
 $color-alabaster: #fafafa;
+$color-form-input-error: #d22d2d;
 
 $spacing-3xl: 5rem; //80px
 $spacing-2xl: 4rem; //64px
@@ -15,6 +16,11 @@ $spacing-s: 1.5rem; //24px;
 $spacing-xs: 1rem; //16px;
 $spacing-2xs: 0.5rem; //8px;
 $spacing-3xs: 0.25rem; //4px;
+
+$spacing-desktop-padding-lg: calc($spacing-3xl * 2);
+$spacing-desktop-padding: calc($spacing-2xl * 2);
+$spacing-tablet-padding: calc($spacing-3xl/2);
+$button-min-width-tablet: 9.375rem; //150px;
 
 $font-size-3xl: 3rem; //48px;
 $font-size-2xl: 2.25rem; //36px;
@@ -29,30 +35,3 @@ $font-size-3xs: 0.625rem; //10px;
 $desktop-breakpoint: 1280px;
 $tablet-breakpoint: 768px;
 $mobile-breakpoint: 320px;
-
-$mobile-side-spacing: 1rem;
-
-@mixin set-font-face($font-name, $font-weight, $otf-font-url, $ttf-font-url) {
-  font-family: $font-name;
-  font-weight: $font-weight;
-  src: url($otf-font-url);
-  src: url($ttf-font-url);
-}
-
-@mixin desktop {
-  @media screen and (min-width: $desktop-breakpoint) {
-    @content;
-  }
-}
-
-@mixin tablet {
-  @media screen and (min-width: $tablet-breakpoint) {
-    @content;
-  }
-}
-
-@mixin mobile {
-  @media screen and (max-width: calc($tablet-breakpoint - 1px)) {
-    @content;
-  }
-}

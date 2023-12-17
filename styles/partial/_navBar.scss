@@ -1,0 +1,71 @@
+@use "./mixins" as *;
+@use "./fonts" as *;
+@use "./variables" as *;
+
+header {
+  background-color: $color-bandsite-black;
+}
+.nav {
+  color: $color-mercury;
+  a {
+    color: $color-alabaster;
+    text-decoration: none;
+  }
+
+  &__heading {
+    text-transform: uppercase;
+    margin: 0;
+    text-align: center;
+    padding: $spacing-xs 0;
+    @include setMobilePageHeaderFont;
+  }
+
+  .nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    margin: 0;
+    text-align: center;
+    padding: 0;
+
+    &__link {
+      padding-bottom: $spacing-xs;
+      width: 50%;
+      &--active {
+        font-weight: bold;
+        border-bottom: solid 4px $color-white;
+        color: $color-white;
+        width: 50%;
+      }
+    }
+  }
+
+  @include tablet {
+    height: 5rem;
+    display: flex;
+    padding-left: $spacing-m;
+
+    &__heading {
+      padding: 0;
+      margin: 1.5rem;
+      @include setPageHeaderFont;
+    }
+    .nav-links {
+      align-content: end;
+      padding-left: $spacing-xs;
+      flex-wrap: nowrap;
+      &__link {
+        @include setFont($font-size-s, $spacing-s, 600);
+        padding: $spacing-m;
+        &--active {
+          @include setFont($font-size-s, $spacing-s, 600);
+          padding: $spacing-m;
+        }
+      }
+    }
+  }
+
+  @include desktop {
+    padding: 0 $spacing-desktop-padding;
+  }
+}

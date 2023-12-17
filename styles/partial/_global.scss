@@ -1,0 +1,13 @@
+@use "./fonts" as *;
+@use "./mixins" as *;
+@use "./variables" as *;
+
+body {
+  font-family: "aveni";
+  color: $color-bandsite-black;
+  margin: 0;
+  @include setBodyFont;
+  @include mobile {
+    @include setMobileBodyFont;
+  }
+}

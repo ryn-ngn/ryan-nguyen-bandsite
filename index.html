@@ -9,12 +9,12 @@
 <body>
     <header>
         <nav class="nav">
-            <h1 class="nav__heading header__page">
+            <h1 class="nav__heading">
                 <a href="index.html">bandsite</a>
             </h1>
-            <ul class="nav__links">
-                <li class="nav__links--link-item active"><a href="./index.html">Biography</a></li>
-                <li class="nav__link--link-item"><a href="./index.html">Show</a></li>
+            <ul class="nav-links">
+                <li class="nav-links__link--active"><a href="./index.html">Biography</a></li>
+                <li class="nav-links__link"><a href="./pages/shows.html">Show</a></li>
             </ul>
         </nav>
     </header>
@@ -26,7 +26,7 @@
         </div>
 
         <article class="about-musicians">
-            <h2 class="about-musicians__heading header__section">
+            <h2 class="about-musicians__heading">
                 About the Musicians
             </h2>
             <img class="about-musicians__band-image" src="./assets/images/band.jpg" alt="music band playing">
@@ -40,7 +40,7 @@
                     - Bryan Teddy, lead vocalist of The Bees Knees
                 </p>
             </div>
-            <h3 class="about-musicians__subHeading header__subHeader">
+            <h3 class="about-musicians__subHeading">
                 The Bees Knees
             </h3>
             <div class="about-musicians__bio">
@@ -70,7 +70,7 @@
         </article>
 
         <article class="gallery">
-            <h2 class="gallery__heading header__section">Photo Gallery</h2>
+            <h2 class="gallery__heading ">Photo Gallery</h2>
             <div class="gallery__content">
                 <img src="./assets/images/Photo-gallery-1.jpg" alt="music festival 1">
                 <img src="./assets/images/Photo-gallery-2.jpg" alt="music festival 2">
@@ -83,22 +83,41 @@
                 <img src="./assets/images/Photo-gallery-9.jpg" alt="music festival 9">
             </div>
         </article>
+
+        <article class="comments">
+            <h2 class="comments__heading">Join the Conversation</h2>
+
+            <div class="comments__form-ctn">
+                <img class="comment-avatar" src="./assets/images/Mohan-muruge.jpg" alt="Mohan-muruge">
+                <form class="comment-form">
+                    <label class="comment-form__label" for="nameInput">Name</label>
+                    <input class="comment-form__content" type="text" name="nameInput" id="nameInput"
+                        placeholder="Enter your name..." required>
+
+                    <label class="comment-form__label" for="commentInput">Comment</label>
+                    <input class="comment-form__content" type="text" name="commentInput" id="commentInput" required>
+
+                    <input class="comment-form__button" type="submit" value="comment">
+                </form>
+            </div>
+            <div class="comments-list">
+
+            </div>
+        </article>
     </main>
     <footer class="footer">
-        <div class="footer__heading-icon-ctn">
-            <h2 class="footer__heading header__section">Get In Touch</h2>
-            <div class="footer__icons">
-                <a href="http://www.instagram.com"><img class="social__icon" src="./assets/icons/Icon-instagram.svg"
-                        alt="instagram"></a>
-                <a href="http://www.facebook.com"><img class="social__icon" src="./assets/icons/Icon-facebook.svg"
-                        alt="facebook"></a>
-                <a href="http://www.twitter.com"><img class="social__icon" src="./assets/icons/Icon-twitter.svg"
-                        alt="twitter"></a>
+        <div class="footer-icon-ctn">
+            <h2 class="footer-icon-ctn__heading">Get In Touch</h2>
+            <div class="footer-icon-ctn__icons">
+                <a href="http://www.instagram.com"><img src="./assets/icons/Icon-instagram.svg" alt="instagram"></a>
+                <a href="http://www.facebook.com"><img src="./assets/icons/Icon-facebook.svg" alt="facebook"></a>
+                <a href="http://www.twitter.com"><img src="./assets/icons/Icon-twitter.svg" alt="twitter"></a>
             </div>
         </div>
-        <section class="footer__contacts">
-            <div class="footer__contacts--person">
-                <h3 class="footer__footerSubHeader">
+
+        <section class="footer-contacts-ctn">
+            <div class="footer-contacts">
+                <h3 class="footer-contacts__heading">
                     Cam Adams <br>
                     The Bees Knees Management
                 </h3>
@@ -106,12 +125,12 @@
                     503 Broadway Penthouse,<br>
                     New York, NY 10012, USA
                 </p>
-                <p class="footer__contacts--person--email">
+                <p class="footer-contacts__email">
                     <a href="mailto:info@thebeesknees.com">info@thebeesknees.com</a>
                 </p>
             </div>
-            <div class="footer__contacts--person">
-                <h3 class="footer__footerSubHeader">
+            <div class="footer-contacts">
+                <h3 class="footer-contacts__heading">
                     Pearl Gregg <br>
                     Limitless Artist Group
                 </h3>
@@ -119,13 +138,13 @@
                     Booking Agent for <br>
                     US / South America / Japan
                 </p>
-                <p class="footer__contacts--person--email">
+                <p class="footer-contacts__email">
 
                     <a href="mailto:pearl.gregg@limitlessag.com">pearl.gregg@limitlessag.com</a>
                 </p>
             </div>
-            <div class="footer__contacts--person">
-                <h3 class="footer__footerSubHeader">
+            <div class="footer-contacts">
+                <h3 class="footer-contacts__heading">
                     Carson Whyte <br>
                     ARCH Entertainment
                 </h3>
@@ -133,14 +152,14 @@
                     Booking Agent for <br>
                     UK / EU / AU
                 </p>
-                <p class="footer__contacts--person--email">
+                <p class="footer-contacts__email">
                     <a href="mailto:cwhyte@archentertainment.com">cwhyte@archentertainment.com</a>
                 </p>
             </div>
         </section>
 
         <section class="footer__logo">
-            <h1 class="nav__heading header__page">
+            <h1>
                 <a href="index.html">bandsite</a>
             </h1>
         </section>
@@ -150,5 +169,6 @@
 
 
     </footer>
+    <script src="./scripts/index-page.js"></script>
 </body>
 </html>
