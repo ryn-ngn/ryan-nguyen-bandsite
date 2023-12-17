@@ -18,6 +18,7 @@ const comments = [
       "I can't stop listening. Every time I hear one of their songs - the vocals - it gives me goosebumps. Shivers straight down my spine. What a beautiful expression of creativity. Can't get enough.",
   },
 ];
+const cmtList = document.querySelector(".comments-list");
 
 // helper function to add a newly created HTML element to a parent element
 function addNewElementToParent(newEleType, parentEle, newEleClass, newEleContent) {
@@ -27,10 +28,31 @@ function addNewElementToParent(newEleType, parentEle, newEleClass, newEleContent
   parentEle.appendChild(childElement);
 }
 
-// helper function to create content of a comment card
-function createCommentCardContent(commentCard, comment) {
-  commentCard.classList.add("comment-card");
-  const blockClass = "comment-card__";
+// helper function to add separator line to comment card
+function addSeparatorLine() {
+  const separatorLine = document.createElement("hr");
+  separatorLine.classList.add("comments-list__divider");
+  cmtList.appendChild(separatorLine);
+}
+
+// helper function to add comment avatar to comment card
+function addAvatar(commentCard, blockClass) {
+  const avatar = document.createElement("div");
+
+  const img = document.createElement("img");
+  img.classList.add(`${blockClass}avatar`);
+  img.src = "https://placehold.co/36";
+  avatar.appendChild(img);
+  commentCard.appendChild(avatar);
+}
+
+function createCommentTxtCtn(comment) {
+  const blockClass = "comment-text-ctn";
+  const commentTxtCtn = document.createElement("div");
+  commentTxtCtn.classList.add(blockClass);
+  const nameDate = document.createElement("div");
+  nameDate.classList.add(`${blockClass}__name-date`);
+  commentTxtCtn.appendChild(nameDate);
 
   // loop through each key-value pair of a comment object
   Object.keys(comment).forEach((key) => {
@@ -41,27 +63,39 @@ function createCommentCardContent(commentCard, comment) {
     else if (key === "date") tempField = "date";
     else tempField = "comment";
 
-    // create heading for each element, add to comment card
-    tempClassName = `${blockClass}heading`;
-    addNewElementToParent("h3", commentCard, tempClassName, tempField);
+    tempClassName = `${blockClass}__${tempField}`;
 
-    // create content under each heading, add to comment card
-    tempClassName = `${blockClass}${tempField}`;
-    addNewElementToParent("p", commentCard, tempClassName, comment[tempField]);
+    if (tempField === "name" || tempField === "date") {
+      addNewElementToParent("p", nameDate, tempClassName, comment[tempField]);
+    } else {
+      addNewElementToParent("p", commentTxtCtn, tempClassName, comment[tempField]);
+    }
   });
+
+  return commentTxtCtn;
 }
 
-const cmtList = document.querySelector(".comments-list");
-
-// loop through each comment
-for (const [key, comment] of Object.entries(comments)) {
-  // create comment card div, add class name (.classList.add(""))
+// helper function to create content of a comment card
+function createCommentCardContent(comment, blockClass) {
   const commentCard = document.createElement("div");
-  createCommentCardContent(commentCard, comment);
-  commentCard.appendChild(document.createElement("hr"));
-  cmtList.appendChild(commentCard);
+
+  commentCard.classList.add("comment-card");
+  addAvatar(commentCard, blockClass);
+
+  let commentTxtCtn = createCommentTxtCtn(comment);
+  commentCard.appendChild(commentTxtCtn);
+  return commentCard;
 }
 
+// loop through comment list, use each comment object to create new comment card
+for (const [key, comment] of Object.entries(comments)) {
+  const blockClass = "comment-card__";
+  const commentCard = createCommentCardContent(comment, blockClass);
+  cmtList.appendChild(commentCard);
+  addSeparatorLine();
+}
+
+// capture form content and transform it into new comment card to be added below comment form
 function addComment() {
   const userName = document.getElementById("nameInput").value;
   const comment = document.getElementById("commentInput").value;
@@ -76,11 +110,12 @@ function addComment() {
     comment: comment,
   };
 
-  const commentCard = document.createElement("div");
-  createCommentCardContent(commentCard, newComment);
+  const commentCard = createCommentCardContent(newComment, "comment-card__");
+  const divider = document.querySelector(".comments-list__divider");
+  divider.after(commentCard);
 
-  const separatorLine = document.querySelector(".comments-list__separator-line");
+  const separatorLine = document.createElement("hr");
+  separatorLine.classList.add("comments-list__divider");
 
-  separatorLine.after(commentCard);
-  commentCard.appendChild(document.createElement("hr"));
+  commentCard.after(separatorLine);
 }

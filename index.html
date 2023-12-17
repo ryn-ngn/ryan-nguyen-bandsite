@@ -86,18 +86,22 @@
 
         <article class="comments">
             <h2 class="comments__heading">Join the Conversation</h2>
-            <img class="comments__avatar" src="./assets/images/Mohan-muruge.jpg" alt="Mohan-muruge">
-            <form class="comment-form">
-                <label class="comment-form__label" for="nameInput">Name</label>
-                <input class="comment-form__content" type="text" name="nameInput" id="nameInput">
-                <br>
-                <label for="commentInput">Comment</label>
-                <input type="textarea" name="commentInput" id="commentInput">
-                <br>
-                <input type="button" value="comment" onclick="addComment()" />
-            </form>
+
+            <div class="comments__form-ctn">
+                <img class="comment-avatar" src="./assets/images/Mohan-muruge.jpg" alt="Mohan-muruge">
+                <form class="comment-form">
+                    <label class="comment-form__label" for="nameInput">Name</label>
+                    <input class="comment-form__content" type="textarea" name="nameInput" id="nameInput"
+                        placeholder="Enter your name..." required>
+
+                    <label class="comment-form__label" for="commentInput">Comment</label>
+                    <input class="comment-form__content" type="textarea" name="commentInput" id="commentInput" required>
+
+                    <input class="comment-form__button" type="button" value="comment" onclick="addComment()" />
+                </form>
+            </div>
             <div class="comments-list">
-                <hr class="comments-list__separator-line">
+                <hr class="comments-list__divider">
             </div>
         </article>
     </main>

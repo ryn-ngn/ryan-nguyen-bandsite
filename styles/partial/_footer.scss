@@ -49,7 +49,7 @@
 
   @include tablet {
     position: relative;
-    padding: 0 calc($spacing-3xl/2);
+    padding: 0 $spacing-tablet-padding;
     @include setFooterFont;
 
     .footer-icon-ctn {
@@ -82,7 +82,7 @@
     &__logo {
       position: absolute;
       top: $spacing-2xs;
-      right: calc($spacing-3xl/2);
+      right: $spacing-tablet-padding;
     }
 
     &__copyright {
@@ -92,7 +92,7 @@
   }
 
   @include desktop {
-    padding: 0 calc($spacing-2xl * 2);
+    padding: 0 $spacing-desktop-padding;
 
     .footer-icon-ctn {
       &__icons {
@@ -106,7 +106,7 @@
     }
 
     &__logo {
-      right: calc($spacing-2xl * 2);
+      right: $spacing-desktop-padding;
     }
   }
 }

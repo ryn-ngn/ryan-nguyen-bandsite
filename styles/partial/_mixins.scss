@@ -69,3 +69,18 @@
 @mixin setMobileLabelButtonFont {
   @include setFont($font-size-3xs, 1.25rem, 700);
 }
+
+// divider setting
+@mixin setDividerStyle {
+  border: solid 2px $color-mercury;
+}
+
+@mixin setAvatarCommentMobile {
+  height: $font-size-2xl;
+  width: $font-size-2xl;
+}
+
+@mixin setAvatarCommentTablet {
+  height: $spacing-ml;
+  width: $spacing-ml;
+}

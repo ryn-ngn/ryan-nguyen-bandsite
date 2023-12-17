@@ -19,7 +19,7 @@
   }
 
   @include tablet {
-    padding: 0 calc($spacing-3xl/2);
+    padding: 0 $spacing-tablet-padding;
     &__heading {
       margin: 0;
       @include setSectionHeaderFont;
@@ -37,6 +37,6 @@
   }
 
   @include desktop {
-    padding: 0 calc($spacing-2xl * 2) $spacing-m calc($spacing-2xl * 2);
+    padding: 0 $spacing-desktop-padding $spacing-m $spacing-desktop-padding;
   }
 }

@@ -41,13 +41,20 @@ function addNewElementToParent(newEleType, parentEle, newEleClass, newEleContent
   parentEle.appendChild(childElement);
 }
 
+// helper function to add separator line to show card
+function addSeparatorLine(showCard, blockClass) {
+  const separatorLine = document.createElement("hr");
+  separatorLine.classList.add(`${blockClass}divider`);
+  showCard.appendChild(separatorLine);
+}
+
 // loop through each shows
 for (const [key, show] of Object.entries(shows)) {
   // create show card div, add class name (.classList.add(""))
   let showCard = document.createElement("div");
   showCard.classList.add("show-card");
 
-  let blockClass = "showCard__";
+  let blockClass = "show-card__";
 
   // loop through each key-value pair of a show object
   Object.keys(show).forEach((key) => {
@@ -66,6 +73,7 @@ for (const [key, show] of Object.entries(shows)) {
     tempClassName = `${blockClass}${tempField}`;
     addNewElementToParent("p", showCard, tempClassName, show[tempField]);
   });
-
+  addNewElementToParent("button", showCard, "show-card__button", "buy tickets");
+  addSeparatorLine(showCard, blockClass);
   showsCtn.appendChild(showCard);
 }

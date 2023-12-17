@@ -1,0 +1,27 @@
+@use "./variables" as *;
+@use "../partial/mixins" as *;
+
+.shows-ctn {
+  padding: 0 $spacing-xs;
+
+  .show-card {
+    &__heading {
+      text-transform: uppercase;
+      color: $color-mercury;
+    }
+    &__dates {
+      font-weight: bold;
+    }
+    &__button {
+      width: 100%;
+      text-transform: uppercase;
+      background-color: $color-bandsite-black;
+      color: white;
+    }
+    &__divider {
+      @include setDividerStyle;
+      margin-left: calc(0rem - $spacing-xs);
+      margin-right: calc(0rem - $spacing-xs);
+    }
+  }
+}
