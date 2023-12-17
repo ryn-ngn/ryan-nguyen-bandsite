@@ -16,7 +16,7 @@ header {
     text-transform: uppercase;
     margin: 0;
     text-align: center;
-    padding: 1rem 0;
+    padding: $spacing-xs 0;
     @include setMobilePageHeaderFont;
   }
 
@@ -29,7 +29,7 @@ header {
     padding: 0;
 
     &__link {
-      padding-bottom: 1rem;
+      padding-bottom: $spacing-xs;
       width: 50%;
       &--active {
         font-weight: bold;

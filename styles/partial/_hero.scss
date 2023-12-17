@@ -5,18 +5,10 @@
 @use "./variables" as *;
 
 .hero {
-  position: relative;
-  text-align: center;
-  color: $color-white;
-  background-color: $color-bandsite-black;
-  height: fit-content;
+  @include setHeroDivStyle;
+
   &__picture {
-    width: 100%;
-    max-height: 65vh;
-    opacity: 50%;
-    object-fit: cover;
-    // fix the bug of hero container always slightly higher than img
-    display: block;
+    @include setHeroPictureStyle;
   }
   &__heading {
     position: absolute;

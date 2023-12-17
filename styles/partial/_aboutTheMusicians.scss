@@ -2,7 +2,7 @@
 @use "./variables" as *;
 
 .about-musicians {
-  margin: 0 $mobile-side-spacing;
+  margin: 0 $spacing-xs;
   &__heading {
     @include setMobileSectionHeaderFont;
   }

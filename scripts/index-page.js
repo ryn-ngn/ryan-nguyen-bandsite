@@ -95,27 +95,42 @@ for (const [key, comment] of Object.entries(comments)) {
   addSeparatorLine();
 }
 
-// capture form content and transform it into new comment card to be added below comment form
-function addComment() {
-  const userName = document.getElementById("nameInput").value;
-  const comment = document.getElementById("commentInput").value;
-  const date = new Date().toLocaleDateString({
-    month: "short",
-    day: "short",
-    year: "numeric",
-  });
-  const newComment = {
-    name: userName,
-    date: date,
-    comment: comment,
-  };
+const commentBtn = document.querySelector(".comment-form__button");
+commentBtn.addEventListener("click", (event) => {
+  const userName = document.getElementById("nameInput");
+  const comment = document.getElementById("commentInput");
 
-  const commentCard = createCommentCardContent(newComment, "comment-card__");
-  const divider = document.querySelector(".comments-list__divider");
-  divider.after(commentCard);
+  if (userName.value !== "" && comment.value !== "") {
+    const date = new Date().toLocaleDateString({
+      month: "short",
+      day: "short",
+      year: "numeric",
+    });
+    const newComment = {
+      name: userName.value,
+      date: date,
+      comment: comment.value,
+    };
+    comments.unshift(newComment);
+    event.preventDefault();
+    document.querySelector(".comment-form").reset();
 
-  const separatorLine = document.createElement("hr");
-  separatorLine.classList.add("comments-list__divider");
+    // attempt to update comments object and re-render the comments-list
+    // resulted in a bug that css wouldn't apply to refreshed DOM
+    // comments.unshift(newComment)
+    // const newCmtList = document.createElement("div");
+    // newCmtList.classList.add(".comments-list");
+    // commentsElement.appendChild(newCmtList);
+    // addSeparatorLine(newCmtList);
+    // populateCommentsList(newCmtList);
 
-  commentCard.after(separatorLine);
-}
+    const commentCard = createCommentCardContent(newComment, "comment-card__");
+    const divider = document.querySelector(".comments-list__divider");
+    divider.after(commentCard);
+
+    const separatorLine = document.createElement("hr");
+    separatorLine.classList.add("comments-list__divider");
+
+    commentCard.after(separatorLine);
+  }
+});

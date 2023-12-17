@@ -42,10 +42,10 @@ function addNewElementToParent(newEleType, parentEle, newEleClass, newEleContent
 }
 
 // helper function to add separator line to show card
-function addSeparatorLine(showCard, blockClass) {
+function addSeparatorLine() {
   const separatorLine = document.createElement("hr");
-  separatorLine.classList.add(`${blockClass}divider`);
-  showCard.appendChild(separatorLine);
+  separatorLine.classList.add("comments-list__divider");
+  showsCtn.appendChild(separatorLine);
 }
 
 // loop through each shows
@@ -54,11 +54,13 @@ for (const [key, show] of Object.entries(shows)) {
   let showCard = document.createElement("div");
   showCard.classList.add("show-card");
 
-  let blockClass = "show-card__";
+  let blockClass = "info-group-ctn";
 
   // loop through each key-value pair of a show object
   Object.keys(show).forEach((key) => {
     let tempField;
+    let infoGroupCtn = document.createElement("div");
+    infoGroupCtn.classList.add(blockClass);
 
     // decide which key-value pair is being processed
     if (key === "dates") tempField = "dates";
@@ -66,14 +68,40 @@ for (const [key, show] of Object.entries(shows)) {
     else tempField = "venue";
 
     // create heading for each element, add to show card
-    tempClassName = `${blockClass}heading`;
-    addNewElementToParent("h3", showCard, tempClassName, tempField);
+    tempClassName = `${blockClass}__heading`;
+    addNewElementToParent("h3", infoGroupCtn, tempClassName, tempField);
 
     // create content under each heading, add to show card
-    tempClassName = `${blockClass}${tempField}`;
-    addNewElementToParent("p", showCard, tempClassName, show[tempField]);
+    tempClassName = `${blockClass}__${tempField}`;
+    addNewElementToParent("p", infoGroupCtn, tempClassName, show[tempField]);
+    showCard.appendChild(infoGroupCtn);
   });
-  addNewElementToParent("button", showCard, "show-card__button", "buy tickets");
-  addSeparatorLine(showCard, blockClass);
+  let infoGroupCtn = document.createElement("div");
+  infoGroupCtn.classList.add(blockClass);
+  addNewElementToParent(
+    "button",
+    infoGroupCtn,
+    "info-group-ctn__button",
+    "buy tickets"
+  );
+  showCard.appendChild(infoGroupCtn);
+  addSeparatorLine();
   showsCtn.appendChild(showCard);
+}
+
+showsCtn.addEventListener("click", (event) => {
+  let showCards = document.querySelectorAll(".show-card");
+  let prevClicked = document.querySelector(".clicked");
+
+  showCards.forEach((card) =>
+    card.addEventListener("click", () => {
+      prevClicked?.classList?.remove("clicked");
+      card.classList.add("clicked");
+    })
+  );
+});
+
+function clearShowCardClick() {
+  // any click on body
+  // loop through
 }

@@ -49,16 +49,7 @@
       }
 
       &__button {
-        height: $spacing-l;
-        background-color: $color-bandsite-black;
-        color: $color-white;
-        text-transform: uppercase;
-        border-radius: $spacing-3xs;
-        @include setMobileSubHeaderFont;
-        &:hover {
-          background: $color-bandsite-drarkblack;
-          cursor: pointer;
-        }
+        @include setButtonStyle;
       }
     }
   }

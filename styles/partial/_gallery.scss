@@ -4,7 +4,7 @@
 
 .gallery {
   background-color: $color-alabaster;
-  padding: $mobile-side-spacing;
+  padding: $spacing-xs;
 
   &__heading {
     @include setMobileSectionHeaderFont;
@@ -12,7 +12,7 @@
   &__content img {
     width: 100%;
     height: auto;
-    margin-bottom: 1rem;
+    margin-bottom: $spacing-xs;
     filter: grayscale(1);
     @include add-scale-and-recolor-animation;
     border-radius: $spacing-2xs;
