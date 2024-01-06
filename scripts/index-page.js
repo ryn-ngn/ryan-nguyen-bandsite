@@ -1,23 +1,17 @@
-const comments = [
-  {
-    name: "Connor Walton",
-    date: "02/17/2021",
-    comment:
-      "This is art. This is inexplicable magic expressed in the purest way, everything that makes up this majestic work deserves reverence. Let us appreciate this for what it is and what it contains.",
-  },
-  {
-    name: "Emilie Beach",
-    date: "01/09/2021",
-    comment:
-      "I feel blessed to have seen them in person. What a comment! They were just perfection. If there was one day of my life I could relive, this would be it. What an incredible day.",
-  },
-  {
-    name: "Miles Acosta",
-    date: "12/20/2020",
-    comment:
-      "I can't stop listening. Every time I hear one of their songs - the vocals - it gives me goosebumps. Shivers straight down my spine. What a beautiful expression of creativity. Can't get enough.",
-  },
-];
+// sprint 3 addition:
+import { BandSiteApi } from "./band-site-api.js";
+const apiKey = "7f897f23-b5c3-4d3d-8727-e5577f22fadf";
+
+const api = new BandSiteApi(apiKey);
+
+let comments = await api.getComments();
+
+comments = comments.data;
+
+for (let comment of comments) {
+  console.log(comment);
+}
+
 const cmtList = document.querySelector(".comments-list");
 
 // helper function to add a newly created HTML element to a parent element
@@ -57,13 +51,16 @@ function createCommentTxtCtn(comment) {
 
     // decide which key-value pair is being processed
     if (key === "name") tempField = "name";
-    else if (key === "date") tempField = "date";
-    else tempField = "comment";
+    else if (key === "timestamp") tempField = "date";
+    else if (key === "comment") tempField = "comment";
 
-    tempClassName = `${blockClass}__${tempField}`;
+    let tempClassName = `${blockClass}__${tempField}`;
 
-    if (tempField === "name" || tempField === "date") {
+    if (tempField === "name") {
       addNewElementToParent("p", nameDate, tempClassName, comment[tempField]);
+    } else if (tempField === "date") {
+      const tempDate = createDate(comment[key]);
+      addNewElementToParent("p", nameDate, tempClassName, tempDate);
     } else {
       addNewElementToParent("p", commentTxtCtn, tempClassName, comment[tempField]);
     }
@@ -72,7 +69,7 @@ function createCommentTxtCtn(comment) {
   return commentTxtCtn;
 }
 
-// helper function to comment comment card from avatar ctn and text ctn
+// helper function to create comment card from avatar ctn and text ctn
 function createCommentCardContent(comment, blockClass) {
   const commentCard = document.createElement("div");
 
@@ -106,18 +103,17 @@ commentBtn.addEventListener("click", (event) => {
 
   if (userName.value === "" || comment.value === "") return;
 
-  const date = new Date().toLocaleDateString({
-    month: "short",
-    day: "short",
-    year: "numeric",
-  });
+  const currTimeStamp = new Date().getTime();
 
   const newComment = {
     name: userName.value,
-    date: date,
+    timestamp: currTimeStamp,
     comment: comment.value,
   };
   comments.unshift(newComment);
+
+  //sort comments after adding new comment:
+  comments.sort((commentA, commentB) => addAvatar.timestamp - blur.timestamp);
   event.preventDefault();
   document.querySelector(".comment-form").reset();
 
@@ -129,3 +125,12 @@ commentBtn.addEventListener("click", (event) => {
 
   populateCommentList();
 });
+
+// helper function to display date in desired format
+function createDate(timestamp = null) {
+  return new Date(timestamp).toLocaleDateString({
+    month: "short",
+    day: "short",
+    year: "numeric",
+  });
+}
