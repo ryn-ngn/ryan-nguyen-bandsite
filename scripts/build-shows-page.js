@@ -1,15 +1,10 @@
 // sprint 3 addition:
 import { BandSiteApi } from "./band-site-api.js";
-import { Helper } from "./helpers.js";
+import { createDate, addNewElementToParent } from "./helpers.js";
 const apiKey = "7f897f23-b5c3-4d3d-8727-e5577f22fadf";
 
-const helper = new Helper();
 const api = new BandSiteApi(apiKey);
 let shows = await api.getShows();
-shows = shows.data;
-for (let show of shows) {
-  console.log(show);
-}
 
 const showsCtn = document.querySelector(".shows-ctn");
 
@@ -30,16 +25,16 @@ for (const [key, show] of Object.entries(shows)) {
 
     // create heading for each element, add to show card
     let tempClassName = `${blockClass}__heading`;
-    helper.addNewElementToParent("h3", infoGroupCtn, tempClassName, key);
+    addNewElementToParent("h3", infoGroupCtn, tempClassName, key);
 
     // create content under each heading, add to show card
     tempClassName = `${blockClass}__${key}`;
 
-    helper.addNewElementToParent(
+    addNewElementToParent(
       "p",
       infoGroupCtn,
       tempClassName,
-      key === "date" ? helper.createDate(show[key]) : show[key]
+      key === "date" ? createDate(show[key]) : show[key]
     );
 
     showCard.appendChild(infoGroupCtn);
@@ -47,14 +42,14 @@ for (const [key, show] of Object.entries(shows)) {
 
   let infoGroupCtn = document.createElement("div");
   infoGroupCtn.classList.add(blockClass);
-  helper.addNewElementToParent(
+  addNewElementToParent(
     "button",
     infoGroupCtn,
     "info-group-ctn__button",
     "buy tickets"
   );
   showCard.appendChild(infoGroupCtn);
-  helper.addNewElementToParent("hr", showsCtn, "shows-ctn__divider");
+  addNewElementToParent("hr", showsCtn, "shows-ctn__divider");
   showsCtn.appendChild(showCard);
 }
 

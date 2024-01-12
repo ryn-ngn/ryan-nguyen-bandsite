@@ -10,6 +10,7 @@ class BandSiteApi {
         `${this.apiUrl}comments?api_key=${this.apiKey}`,
         comment
       );
+      return response.data;
     } catch (error) {
       console.error(error);
     }
@@ -17,10 +18,10 @@ class BandSiteApi {
 
   async getComments() {
     try {
-      const comments = await axios.get(
+      const response = await axios.get(
         `${this.apiUrl}comments?api_key=${this.apiKey}`
       );
-      return comments;
+      return response.data;
     } catch (error) {
       console.error(error);
     }
@@ -31,7 +32,7 @@ class BandSiteApi {
       const shows = await axios.get(
         `${this.apiUrl}showdates?api_key=${this.apiKey}`
       );
-      return shows;
+      return shows.data;
     } catch (error) {
       console.error(error);
     }
@@ -49,7 +50,7 @@ class BandSiteApi {
 
   async deleteComment(commentId) {
     try {
-      const response = await axios.delete(
+      await axios.delete(
         `${this.apiUrl}comments/${commentId}?api_key=${this.apiKey}`
       );
     } catch (error) {

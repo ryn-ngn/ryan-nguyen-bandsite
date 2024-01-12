@@ -1,18 +1,10 @@
 // sprint 3 addition:
 import { BandSiteApi } from "./band-site-api.js";
-import { Helper } from "./helpers.js";
+import { createDate, addNewElementToParent } from "./helpers.js";
 const apiKey = "7f897f23-b5c3-4d3d-8727-e5577f22fadf";
 
 const api = new BandSiteApi(apiKey);
-const helper = new Helper();
-
-let comments = await api.getComments();
-
-comments = comments.data;
-for (let comment of comments) {
-  console.log(comment);
-}
-
+let comments;
 const cmtList = document.querySelector(".comments-list");
 
 // helper function to create avatar container
@@ -40,19 +32,13 @@ function createCommentTxtCtn(comment) {
 
   // loop through each key-value pair of a comment object
   Object.keys(comment).forEach((key) => {
-    console.log("*** here ***:", key);
     let tempClassName;
     tempClassName = `${blockClass}__${key}`;
 
     if (key === "timestamp") {
-      helper.addNewElementToParent(
-        "p",
-        nameDate,
-        tempClassName,
-        helper.createDate(comment[key])
-      );
+      addNewElementToParent("p", nameDate, tempClassName, createDate(comment[key]));
     } else if (key === "name" || key === "comment") {
-      helper.addNewElementToParent(
+      addNewElementToParent(
         "p",
         key === "name" ? nameDate : commentTxtCtn,
         tempClassName,
@@ -78,38 +64,52 @@ function createCommentCardContent(comment, blockClass) {
 }
 
 // loop through comment list, use each comment object to create new comment card
-function populateCommentList() {
+async function populateCommentList(comments) {
+  if (!comments) {
+    comments = await api.getComments();
+    // comments = comments.data;
+  }
+
   //sort comments after adding new comment:
   comments.sort((commentA, commentB) => commentB.timestamp - commentA.timestamp);
 
-  helper.addNewElementToParent("hr", cmtList, "comments-list__divider");
+  addNewElementToParent("hr", cmtList, "comments-list__divider");
 
   for (const [key, comment] of Object.entries(comments)) {
-    const blockClass = "comment-card__";
-    const commentCard = createCommentCardContent(comment, blockClass);
+    const commentCard = createCommentCardContent(comment, "comment-card__");
     cmtList.appendChild(commentCard);
-    helper.addNewElementToParent("hr", cmtList, "comments-list__divider");
+    addNewElementToParent("hr", cmtList, "comments-list__divider");
   }
 }
-populateCommentList();
+populateCommentList(comments);
 
 // event listener to handle form submit/ mouse click on COMMEnT button
 const commentBtn = document.querySelector(".comment-form__button");
 commentBtn.addEventListener("click", async (event) => {
+  event.preventDefault();
   const userName = document.getElementById("nameInput");
   const comment = document.getElementById("commentInput");
 
   if (userName.value === "" || comment.value === "") return;
 
-  const newComment = {
+  const newCommentContent = {
     name: userName.value,
     comment: comment.value,
   };
 
-  const response = await api.postComment(newComment);
+  const newCommentObj = await api.postComment(newCommentContent);
 
-  event.preventDefault();
   document.querySelector(".comment-form").reset();
 
-  populateCommentList();
+  // locate current top comment
+  const topComment = cmtList.querySelector(".comment-card");
+
+  // create a new comment card from comment form input and insert before current top comment
+  const newCommentCard = createCommentCardContent(newCommentObj, "comment-card__");
+  cmtList.insertBefore(newCommentCard, topComment);
+
+  // add divider after newly added comment and before previous top comment
+  const newDivider = document.createElement("hr");
+  newDivider.classList.add("comments-list__divider");
+  cmtList.insertBefore(newDivider, topComment);
 });
