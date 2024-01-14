@@ -8,7 +8,7 @@ const api = new BandSiteApi(apiKey);
 const cmtList = document.querySelector(".comments-list");
 
 // helper function to create avatar container
-function createAvatar(commentCard, blockClass) {
+function createAvatar(blockClass) {
   const avatar = document.createElement("div");
 
   const img = document.createElement("img");
@@ -20,24 +20,37 @@ function createAvatar(commentCard, blockClass) {
 }
 
 // helper function to create avatar container
-function createLikeIcon(likeCount, blockClass) {
+function createLikeInfo(likeCount, blockClass) {
   const iconCtn = document.createElement("div");
+  iconCtn.classList.add(`${blockClass}__like-info`);
+
+  const likeCtn = document.createElement("div");
+  likeCtn.classList.add(`${blockClass}__like-ctn`);
 
   const likeNumber = document.createElement("p");
   likeNumber.innerText = likeCount;
   likeNumber.classList.add(`${blockClass}__like-count`);
-  iconCtn.appendChild(likeNumber);
+  likeCtn.appendChild(likeNumber);
 
-  const icon = document.createElement("img");
-  icon.src = "../assets/icons/icon-like.svg";
-  iconCtn.appendChild(icon);
-  iconCtn.classList.add(`${blockClass}__like-icon`);
+  const likeIcon = document.createElement("img");
+  likeIcon.src = "../assets/icons/icon-like.svg";
+  likeIcon.classList.add(`${blockClass}__like-icon`);
+  likeCtn.appendChild(likeIcon);
+
+  iconCtn.appendChild(likeCtn);
+
+  const deleteIcon = document.createElement("img");
+  deleteIcon.src = "../assets/icons/icon-delete.svg";
+  deleteIcon.classList.add(`${blockClass}__delete-like`);
+
+  iconCtn.appendChild(deleteIcon);
+
   return iconCtn;
 }
 
 // helper function to create text content (name, date, comment) container
 function createCommentTxtCtn(comment) {
-  const blockClass = "comment-text-ctn";
+  const blockClass = "comment-details";
 
   const commentTxtCtn = document.createElement("div");
   commentTxtCtn.classList.add(blockClass);
@@ -64,7 +77,7 @@ function createCommentTxtCtn(comment) {
 
   const likeCount = comment.likes;
 
-  const likeIcon = createLikeIcon(likeCount, blockClass);
+  const likeIcon = createLikeInfo(likeCount, blockClass);
   commentTxtCtn.appendChild(likeIcon);
 
   return commentTxtCtn;
@@ -75,7 +88,7 @@ function createCommentCardContent(comment, blockClass) {
   const commentCard = document.createElement("div");
   commentCard.setAttribute("id", comment.id);
   commentCard.classList.add("comment-card");
-  commentCard.appendChild(createAvatar(commentCard, blockClass));
+  commentCard.appendChild(createAvatar(blockClass));
   commentCard.appendChild(createCommentTxtCtn(comment));
   return commentCard;
 }
@@ -102,8 +115,8 @@ async function populateCommentList() {
 const commentBtn = document.querySelector(".comment-form__button");
 commentBtn.addEventListener("click", async (event) => {
   event.preventDefault();
-  const userName = document.getElementById("nameInput");
-  const comment = document.getElementById("commentInput");
+  const userName = document.getElementById("name-input");
+  const comment = document.getElementById("comment-input");
 
   if (userName.value === "" || comment.value === "") return;
 
@@ -127,18 +140,37 @@ commentBtn.addEventListener("click", async (event) => {
   const newDivider = document.createElement("hr");
   newDivider.classList.add("comments-list__divider");
   cmtList.insertBefore(newDivider, topComment);
+
+  // to include newly added new comment's to likes handlers
+  updateLike();
+  deleteCommentHandler();
 });
 
+async function handleLikeClick(event) {
+  const idClicked = event.target.closest(".comment-card").id;
+  const likeCount = event.target.previousSibling;
+  const likeResponse = await api.addLike(idClicked);
+  likeCount.innerText = likeResponse.likes;
+}
+
 async function updateLike() {
-  const likes = document.querySelectorAll(".comment-text-ctn__like-icon img");
+  const likes = document.querySelectorAll(".comment-details__like-icon");
 
   // 2. loop through like icon node lists, add event listener to each icon
-  likes.forEach((like) =>
-    like.addEventListener("click", async (event) => {
+  likes.forEach((like) => like.addEventListener("click", handleLikeClick));
+}
+
+async function deleteCommentHandler() {
+  const deleteIcon = document.querySelectorAll(".comment-details__delete-like");
+
+  // 2. loop through delete icon node lists, add event listener to each icon
+  deleteIcon.forEach((icon) =>
+    icon.addEventListener("click", async (event) => {
       const idClicked = event.target.closest(".comment-card").id;
-      const likeCount = event.target.previousSibling;
-      const likeResponse = await api.addLike(idClicked);
-      likeCount.innerText = likeResponse.likes;
+      const aboveDivider = event.target.closest(".comment-card").previousSibling;
+      await api.deleteComment(idClicked);
+      cmtList.removeChild(aboveDivider);
+      cmtList.removeChild(event.target.closest(".comment-card"));
     })
   );
 }
@@ -146,6 +178,7 @@ async function updateLike() {
 async function loadPage() {
   await populateCommentList();
   updateLike();
+  deleteCommentHandler();
 }
 
 loadPage();

@@ -1,5 +1,6 @@
 @use "./variables" as *;
 @use "./mixins" as *;
+@use "./animation" as *;
 
 .comments {
   padding: 0 $spacing-xs;
@@ -67,7 +68,7 @@
         border-radius: 50%;
       }
 
-      .comment-text-ctn {
+      .comment-details {
         padding-left: $spacing-xs;
         width: 100%;
         &__name-date {
@@ -82,6 +83,27 @@
         &__timestamp {
           color: $color-silver;
           margin: 0;
+        }
+
+        &__like-info {
+          display: flex;
+          justify-content: space-between;
+        }
+
+        &__like-ctn {
+          display: flex;
+        }
+
+        &__like-icon {
+          @include add-scale-animation;
+        }
+
+        &__like-count {
+          padding-right: $spacing-2xs;
+        }
+
+        &__delete-like:hover {
+          @include add-scale-animation;
         }
       }
     }

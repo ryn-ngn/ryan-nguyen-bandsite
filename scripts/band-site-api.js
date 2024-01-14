@@ -51,7 +51,7 @@ class BandSiteApi {
 
   async deleteComment(commentId) {
     try {
-      await axios.delete(
+      const response = await axios.delete(
         `${this.apiUrl}comments/${commentId}?api_key=${this.apiKey}`
       );
       return response.data;
