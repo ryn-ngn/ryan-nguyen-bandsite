@@ -43,6 +43,7 @@ class BandSiteApi {
       const response = await axios.put(
         `${this.apiUrl}comments/${commentId}/like?api_key=${this.apiKey}`
       );
+      return response.data;
     } catch (error) {
       console.error(error);
     }
@@ -53,6 +54,7 @@ class BandSiteApi {
       await axios.delete(
         `${this.apiUrl}comments/${commentId}?api_key=${this.apiKey}`
       );
+      return response.data;
     } catch (error) {
       console.error(error);
     }

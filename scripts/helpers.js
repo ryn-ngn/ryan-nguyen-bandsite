@@ -17,3 +17,10 @@ export function addNewElementToParent(
   if (newEleContent) childElement.innerText = newEleContent;
   parentEle.appendChild(childElement);
 }
+
+export function findMatchCommentId(id, comments) {
+  for (const commentNode of comments) {
+    if (id === commentNode.id) return commentNode.id;
+  }
+  return false;
+}
