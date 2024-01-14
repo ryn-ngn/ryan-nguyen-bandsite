@@ -90,14 +90,15 @@
             <div class="comments__form-ctn">
                 <img class="comment-avatar" src="./assets/images/Mohan-muruge.jpg" alt="Mohan-muruge">
                 <form class="comment-form">
-                    <label class="comment-form__label" for="nameInput">Name</label>
-                    <input class="comment-form__content" type="text" name="nameInput" id="nameInput"
+                    <label class="comment-form__label" for="name-input">Name</label>
+                    <input class="comment-form__content" type="text" name="name-input" id="name-input"
                         placeholder="Enter your name..." required>
 
-                    <label class="comment-form__label" for="commentInput">Comment</label>
-                    <input class="comment-form__content" type="text" name="commentInput" id="commentInput" required>
+                    <label class="comment-form__label" for="comment-input">Comment</label>
+                    <input class="comment-form__content" type="text" name="comment-input" id="comment-input" required>
 
-                    <input class="comment-form__button" type="submit" value="comment">
+                    <!-- <input class="comment-form__button" type="submit" value="comment"> -->
+                    <button type="submit" class="comment-form__button">comment</button>
                 </form>
             </div>
             <div class="comments-list">
@@ -169,6 +170,7 @@
 
 
     </footer>
-    <script src="./scripts/index-page.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script type="module" src="./scripts/index-page.js"></script>
 </body>
 </html>
