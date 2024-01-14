@@ -64,8 +64,3 @@ showsCtn.addEventListener("click", (event) => {
     })
   );
 });
-
-function clearShowCardClick() {
-  // any click on body
-  // loop through
-}
